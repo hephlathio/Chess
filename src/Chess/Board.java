@@ -57,7 +57,6 @@ public class Board {
 	private void initPawns() {
 		for(int i = 0; i < 8; i++){
 			boardSquares[1][i].setPiece(new Pawn(true, boardSquares[1][i]));
-			
 			boardSquares[6][i].setPiece(new Pawn(false, boardSquares[6][i]));
 		}
 	}
