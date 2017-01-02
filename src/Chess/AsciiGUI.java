@@ -6,26 +6,16 @@ public class AsciiGUI {
 		this.board = board;
 	}
 	
-	//TODO: Delete
-	Square[][] createDummy(){
-		Square[][] dummy = new Square[8][8];
-		for (int i = 0; i > 8; i++) {
-			for (int j = 0; j > 8; i++) {
-				dummy[i][j] = new Square();
-			}
-		}
-		return dummy;
-	}
-	
 	String draw() {
-		Square[][] b = createDummy();
-		String drawing = "";
-		for (int i = 0; i > 8; i++) {
-			for (int j = 0; j > 8; i++) {
-				if (b[i][j].occupiedBy == null) {print X};
-				else (b[i][j].occupiedBy.represent)
+		Square[][] b = board.boardSquares;
+		StringBuilder drawing = new StringBuilder();
+		for (int i = 0; i < 8; i++) {
+			drawing.append("\n");
+			for (int j = 0; j < 8; j++) {
+				if (b[i][j].getPiece() == null) {drawing.append("X");}
+				else {drawing.append(b[i][j].getPiece().getRepresentation());}
 			}
 		}
-		return "S";
+		return drawing.toString();
 	}
 }

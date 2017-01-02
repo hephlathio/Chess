@@ -3,8 +3,9 @@ package Chess;
 import java.util.ArrayList;
 
 public abstract class Piece {
-	private boolean isWhite; //THAT'S RACIST!
-	private Square currentSquare;
+	protected boolean isWhite; //THAT'S RACIST!
+	protected Square currentSquare;
+	protected char representation;
 		
 	public Piece(boolean isWhite, Square currentSquare) {
 		this.isWhite = isWhite;
@@ -17,5 +18,13 @@ public abstract class Piece {
 		//if can take king
 		//illegal move
 		return possibleSquares;
+	}
+	
+	public char getRepresentation() {
+		return representation;
+	}
+	
+	public void setRepresentation(char representation) {
+		this.representation = representation;
 	}
 }

@@ -11,11 +11,6 @@ public class Game {
 	public void initPlayers(){
 		//creates players and sets opponent reference
 	}
-	public static void main(String[] args) {
-		Game game = new Game();
-		game.initBoard();
-		
-		
-	}
+
 
 }
