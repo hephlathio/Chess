@@ -1,8 +1,8 @@
 package Chess;
 
-public class Pawn extends Piece {
+public class King extends Piece {
 	private boolean hasMoved;
-		public Pawn(boolean isWhite, Square currentSquare) {
+		public King(boolean isWhite, Square currentSquare) {
 			super(isWhite, currentSquare);
 	}
 	//TODO implement en-passant

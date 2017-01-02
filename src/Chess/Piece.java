@@ -6,8 +6,9 @@ public abstract class Piece {
 	private boolean isWhite; //THAT'S RACIST!
 	private Square currentSquare;
 		
-	public Piece() {
-		// TODO Auto-generated constructor stub
+	public Piece(boolean isWhite, Square currentSquare) {
+		this.isWhite = isWhite;
+		this.currentSquare = currentSquare;
 	}
 	//need different logic for all pieces
 	public ArrayList<Square> possibleMoves(){
