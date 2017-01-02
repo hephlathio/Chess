@@ -27,7 +27,7 @@ public abstract class Piece {
 	public void setRepresentation(char representation) {
 		this.representation = representation;
 	}
-}
+	
 	public Square getCurrentSquare() {
 		return currentSquare;
 	}
