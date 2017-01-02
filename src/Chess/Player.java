@@ -4,11 +4,9 @@ import java.util.Map;
 
 public class Player {
 	private Player opponent;
-	private boolean isWhite;
+	private boolean white;
 	private Piece king;
-	public Player(boolean isWhite) {
-		this.isWhite = isWhite;
-	}
+	
 	public void setOpponent(Player opponent){
 		this.opponent = opponent; 
 	}
@@ -20,5 +18,13 @@ public class Player {
 	}
 	public Square getKingPosition(){
 		return king.getCurrentSquare();
+	}
+	
+	public void setIsWhite(boolean isWhite) {
+		this.white = isWhite;
+	}
+	
+	public boolean isWhite() {
+		return white;
 	}
 }

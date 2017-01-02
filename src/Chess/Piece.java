@@ -3,12 +3,12 @@ package Chess;
 import java.util.ArrayList;
 
 public abstract class Piece {
-	protected boolean isWhite; //THAT'S RACIST!
+	protected Player owner; //No longer racist
 	protected Square currentSquare;
 	protected char representation;
 		
-	public Piece(boolean isWhite, Square currentSquare) {
-		this.isWhite = isWhite;
+	public Piece(Player owner, Square currentSquare) {
+		this.owner = owner;
 		this.setCurrentSquare(currentSquare);
 	}
 	//need different logic for all pieces
