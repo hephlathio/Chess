@@ -22,13 +22,11 @@ public class Board {
 	}
 	
 	public void setWhite(Player player) {
-		white = player;
-		player.setIsWhite(true);
+		this.white = player;
 	}
 	
 	public void setBlack(Player player) {
-		black = player;
-		player.setIsWhite(false);
+		this.black = player;
 	}
 	
 	private void initPieces(){

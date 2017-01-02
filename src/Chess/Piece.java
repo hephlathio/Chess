@@ -21,7 +21,7 @@ public abstract class Piece {
 	}
 	
 	public char getRepresentation() {
-		return representation;
+		return owner.isWhite() ? representation:Character.toUpperCase(representation);
 	}
 	
 	public void setRepresentation(char representation) {

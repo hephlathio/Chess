@@ -2,9 +2,8 @@ package Chess;
 
 public class Tester {
 	private static void asciiGUITest() {
-		Board testBoard = new Board();
-		testBoard.init();
-		AsciiGUI ag = new AsciiGUI(testBoard);
+		Game testGame = Game.newGame();
+		AsciiGUI ag = new AsciiGUI(testGame.getBoard());
 		System.out.println(ag.draw());
 	}
 	

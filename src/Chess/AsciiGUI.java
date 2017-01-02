@@ -10,11 +10,11 @@ public class AsciiGUI {
 		Square[][] b = board.boardSquares;
 		StringBuilder drawing = new StringBuilder();
 		for (int i = 0; i < 8; i++) {
-			drawing.append("\n");
 			for (int j = 0; j < 8; j++) {
 				if (b[i][j].getPiece() == null) {drawing.append("X");}
 				else {drawing.append(b[i][j].getPiece().getRepresentation());}
 			}
+			drawing.append("\n");
 		}
 		return drawing.toString();
 	}
