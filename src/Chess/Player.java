@@ -27,4 +27,7 @@ public class Player {
 	public boolean isWhite() {
 		return white;
 	}
+	
+	public void move() {
+	}
 }

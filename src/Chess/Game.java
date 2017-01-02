@@ -3,12 +3,28 @@ package Chess;
 public class Game {
 	private Board board;
 	private Player white, black;
+	private Player currentPlayer;
 	
 	public static Game newGame() {
 		Game game = new Game();
-		game.initPlayers();
-		game.initBoard();
+		game.initNewGame();
 		return game;
+	}
+	
+	public void initNewGame() {
+		initPlayers();
+		initBoard();
+		currentPlayer = white;
+	}
+	
+	public void play() {
+		boolean playing = true;
+		while (playing) {
+			currentPlayer.move();
+			//playing = Board.playing
+			//Clock.hit
+			currentPlayer = currentPlayer.getOpponent();
+		}
 	}
 	
 	public static Game loadGame() {
