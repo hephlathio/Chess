@@ -8,7 +8,7 @@ public abstract class Piece {
 		
 	public Piece(boolean isWhite, Square currentSquare) {
 		this.isWhite = isWhite;
-		this.currentSquare = currentSquare;
+		this.setCurrentSquare(currentSquare);
 	}
 	//need different logic for all pieces
 	public ArrayList<Square> possibleMoves(){
@@ -17,5 +17,11 @@ public abstract class Piece {
 		//if can take king
 		//illegal move
 		return possibleSquares;
+	}
+	public Square getCurrentSquare() {
+		return currentSquare;
+	}
+	public void setCurrentSquare(Square currentSquare) {
+		this.currentSquare = currentSquare;
 	}
 }

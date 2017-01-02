@@ -4,9 +4,10 @@ import java.util.Map;
 
 public class Player {
 	private Player opponent;
-	//Map of pieces controlled mapped to type
-	public Player() {
-		// TODO Auto-generated constructor stub
+	private boolean isWhite;
+	private Piece king;
+	public Player(boolean isWhite) {
+		this.isWhite = isWhite;
 	}
 	public void setOpponent(Player opponent){
 		this.opponent = opponent; 
@@ -14,8 +15,10 @@ public class Player {
 	public Player getOpponent(){
 		return opponent;
 	}
+	public void setKing(Piece king){
+		this.king = king; 
+	}
 	public Square getKingPosition(){
-		//TODO make function
-		return new Square();
+		return king.getCurrentSquare();
 	}
 }
