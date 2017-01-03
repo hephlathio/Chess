@@ -11,7 +11,8 @@ public class Tester {
 		Square testSquare = testGame.getBoard().boardSquares[1][1];
 		System.out.println(testSquare.getName());
 		System.out.println(testSquare.look(Dir.UP, 8).getName());
-		System.out.println(testSquare.look(Dir.UP, 4));
+		System.out.println(testSquare.look(Dir.UP, 4).getName());
+		System.out.println(testSquare.seek(Dir.UP, 'P', 8));
 		
 	}
 	
