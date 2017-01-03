@@ -17,6 +17,20 @@ public class Board {
 		for(int y = 0; y < 8; y++){
 			for(int x = 0; x < 8; x++){
 				boardSquares[x][y] = new Square();
+				boardSquares[x][y].setCoords(x, y);
+			}
+		}
+		setNeighbours();
+	}
+	
+	private void setNeighbours(){
+		for(int y = 0; y < 8; y++){
+			for(int x = 0; x < 8; x++){
+				for (Dir d : Dir.values()) {
+					int[] delta = d.toCoords();
+					if (x + delta[0] >= 0 && x + delta[0] < 8 && y + delta[1] >= 0 && y + delta[1] < 8)
+						boardSquares[x][y].setNeighbour(d, boardSquares[x + delta[0]][y + delta[1]]);
+				}	
 			}
 		}
 	}

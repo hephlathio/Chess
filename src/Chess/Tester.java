@@ -6,8 +6,18 @@ public class Tester {
 		AsciiGUI ag = new AsciiGUI(testGame.getBoard());
 		System.out.println(ag.draw());
 	}
+	private static void lookTest() {
+		Game testGame = Game.newGame();
+		Square testSquare = testGame.getBoard().boardSquares[1][1];
+		System.out.println(testSquare.getName());
+		System.out.println(testSquare.look(Dir.UP, 8).getName());
+		System.out.println(testSquare.look(Dir.UP, 4));
+		
+	}
+	
 	
 	public static void main(String[] args) {
 		asciiGUITest();
+		lookTest();
 	}
 }
