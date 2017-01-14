@@ -6,7 +6,7 @@ public class Player {
 	private Player opponent;
 	private boolean white;
 	private Piece king;
-	
+	protected Game game;
 	public void setOpponent(Player opponent){
 		this.opponent = opponent; 
 	}
@@ -27,11 +27,15 @@ public class Player {
 	public boolean isWhite() {
 		return white;
 	}
-	
-	public void move() {
+	public void setGame(Game game){
+		this.game = game;
+	}
+	//please override this
+	public Square[] move() {
 		//wait move
 		//read move
 		//list next
 		//calc next
+		return null;
 	}
 }

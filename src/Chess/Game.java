@@ -37,10 +37,12 @@ public class Game {
 	}
 	
 	public void initPlayers(){
-		white = new Player();
+		white = new TestPlayer(new String[][]{{"a2", "a3"},{"b2", "c5"}});
 		black = new Player();
 		white.setIsWhite(true);
 		black.setIsWhite(false);
+		white.setGame(this);
+		black.setGame(this);
 	}
 
 	public void initBoard(){

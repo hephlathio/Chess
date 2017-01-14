@@ -86,4 +86,10 @@ public class Board {
 			boardSquares[6][i].setPiece(new Pawn(black, boardSquares[6][i]));
 		}
 	}
+	
+	public Square stringToSquare(String s){
+		char col = s.charAt(0);
+		char row = s.charAt(1);
+		return boardSquares[row - '1'][col - 'a'];
+	}
 }

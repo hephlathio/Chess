@@ -33,11 +33,22 @@ public class Tester {
 		System.out.println(testGame.getBoard().boardSquares[3][3].getPaths());
 		System.out.println(testGame.getBoard().boardSquares[3][3].getPaths().size());
 	}
+	private static void playerTest(){
+		Game testGame = Game.newGame();
+		Player testPlayer = testGame.getPlayers()[0];
+		Square[] testMove = testPlayer.move();
+		System.out.println(testMove[0]);
+		System.out.println(testMove[1]);
+		testMove = testPlayer.move();
+		System.out.println(testMove[0]);
+		System.out.println(testMove[1]);
+	}
 	
 	public static void main(String[] args) {
 		asciiGUITest();
 		lookTest();
 		dirTest();
 		pathTest();
+		playerTest();
 	}
 }
