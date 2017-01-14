@@ -53,4 +53,8 @@ public class Game {
 	public Board getBoard(){
 		return board;
 	}
+	
+	public Player[] getPlayers(){
+		return new Player[]{white, black};
+	}
 }

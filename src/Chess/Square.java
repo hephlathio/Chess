@@ -1,5 +1,8 @@
 package Chess;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Square {
 	private int x, y; //0 indexed, use getName to get chess convention name.
 	private Piece piece; //or as function
@@ -23,6 +26,37 @@ public class Square {
 		neighbours[d.ordinal()] = neighbour;
 	}
 	
+
+	
+	//Think about where its called from
+	public List<Square> getPaths(){
+		List<Square> possibleFields = new ArrayList<Square>();
+		//if pawn: Do special
+		for (Dir d: this.piece.getDirs()){
+			List<Square> dPath = getPath(d);
+			dPath.remove(0);
+			Piece foundPiece = dPath.get(dPath.size() - 1).getPiece();
+			if (foundPiece != null && foundPiece.getOwner() == this.getPiece().getOwner()) dPath.remove(dPath.size() - 1);
+			possibleFields.addAll(dPath);
+		}
+		return possibleFields;
+	}
+	
+	public List<Square> getPath(Dir d) {return getPath(d, 8);}
+	
+	public List<Square> getPath(Dir d, int length){
+		List<Square> currentPath = new ArrayList<Square>();
+		Square neighbour = neighbours[d.ordinal()];
+		currentPath.add(this);
+		if (length != 0 && neighbour != null) {
+			if (neighbour.piece != null) currentPath.add(neighbour);
+			else currentPath.addAll(neighbour.getPath(d, length-1));
+		}
+		return currentPath;
+	}
+	
+	public Square look(Dir d) {return this.look(d, 8);}
+
 	//Looks in a direction for up to length tiles and returns the first piece it sees or the square it ends on.
 	public Square look(Dir d, int length){
 		if (length == 0) {return this;}
@@ -32,8 +66,6 @@ public class Square {
 		return neighbour.look(d, length-1);
 	}
 	
-	public Square look(Dir d) {return this.look(d, 8);}
-
 	/*
 	 * Looks in direction for the first piece. Returns true if this piece is represented by representation and false otherwise. 
 	 * Representations:
@@ -61,5 +93,5 @@ public class Square {
 		
 	}
 	
-	public String getName() {return (char)('a' + y) + "" + (x+1);}
+	public String toString() {return (char)('a' + y) + "" + (x+1);}
 }

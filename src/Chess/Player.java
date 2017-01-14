@@ -29,5 +29,9 @@ public class Player {
 	}
 	
 	public void move() {
+		//wait move
+		//read move
+		//list next
+		//calc next
 	}
 }
