@@ -12,7 +12,7 @@ public class Tester {
 		System.out.println(testSquare);
 		System.out.println(testSquare.look(Dir.UP, 8));
 		System.out.println(testSquare.look(Dir.UP, 4));
-		System.out.println(testSquare.seek(Dir.UP, 'P', 8));	
+		System.out.println(testSquare.seek(Dir.UP, 'P', 8));
 	}
 	
 	private static void dirTest() {
