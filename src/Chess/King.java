@@ -6,6 +6,7 @@ public class King extends Piece {
 			super(owner, currentSquare);
 			moveDirs = new Dir[] {Dir.UP, Dir.UPRIGHT, Dir.UPLEFT, Dir.DOWN, Dir.DOWNLEFT, Dir.DOWNRIGHT, Dir.LEFT, Dir.RIGHT};
 			representation = 'k';
+			hasMoved = false; 
 	}
 	//TODO implement en-passant
 }
