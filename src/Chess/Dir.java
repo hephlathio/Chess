@@ -35,4 +35,9 @@ public enum Dir {
 			return null;
 		}
 	}
+
+	public Dir toLocal(Piece piece) {
+		if (!piece.owner.isWhite()) return Dir.values()[(this.ordinal() + 4) % 8];
+		else return this;
+	}
 }

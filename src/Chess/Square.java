@@ -26,14 +26,17 @@ public class Square {
 		neighbours[d.ordinal()] = neighbour;
 	}
 	
-
+	public Square getNeighbour(Dir d){
+		return neighbours[d.ordinal()];
+	}
 	
 	//Think about where its called from
 	public List<Square> getPaths(){
 		List<Square> possibleFields = new ArrayList<Square>();
 		//if pawn: Do special
 		for (Dir d: this.piece.getDirs()){
-			List<Square> dPath = getPath(d);
+			int moveLength = this.piece.getMovelength(d);
+			List<Square> dPath = getPath(d, moveLength);
 			dPath.remove(0);
 			Piece foundPiece = dPath.get(dPath.size() - 1).getPiece();
 			if (foundPiece != null && foundPiece.getOwner() == this.getPiece().getOwner()) dPath.remove(dPath.size() - 1);

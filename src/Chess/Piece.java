@@ -45,4 +45,8 @@ public abstract class Piece {
 	public Player getOwner() {
 		return owner;
 	}
+
+	public int getMovelength(Dir d) {
+		return 8;
+	}
 }
