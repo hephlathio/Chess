@@ -10,12 +10,33 @@ public class Game {
 		game.initNewGame();
 		return game;
 	}
-	
+
 	public void initNewGame() {
 		initPlayers();
 		initBoard();
 		currentPlayer = white;
 	}
+	
+	public static Game newGame(Player white, Player black) {
+		Game game = new Game();
+		game.initNewGame(white, black);
+		return game;
+	}
+	
+	public void initNewGame(Player white, Player black) {
+		initPlayers(white, black);
+		initBoard();
+		currentPlayer = white;
+	}
+	public void initPlayers(Player white, Player black){
+		this.white = white;
+		this.black = black;
+		white.setIsWhite(true);
+		black.setIsWhite(false);
+		white.setGame(this);
+		black.setGame(this);
+	}
+
 	
 	public void play() {
 		boolean playing = true;
