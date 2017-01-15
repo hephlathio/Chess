@@ -46,7 +46,7 @@ public abstract class Piece {
 		return owner;
 	}
 
-	public int getMovelength(Dir d) {
+	public int getMoveLength(Dir d) {
 		return 8;
 	}
 }

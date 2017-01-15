@@ -9,6 +9,7 @@ public class Pawn extends Piece {
 			super(owner, currentSquare);
 			moveDirs = new Dir[] {Dir.UP.toLocal(this), Dir.UPLEFT.toLocal(this), Dir.UPRIGHT.toLocal(this)};
 			representation = 'p';
+			hasMoved = false;
 	}
 		
 		public Dir[] getDirs(){
@@ -29,8 +30,8 @@ public class Pawn extends Piece {
 			dirList.toArray(dirArray);
 			return dirArray;
 		}
-		
-		public int getLength(Dir d){
+		@Override
+		public int getMoveLength(Dir d){
 			if (hasMoved == false && d == moveDirs[0]) return 2;
 			return 1;
 		}

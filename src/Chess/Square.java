@@ -35,7 +35,7 @@ public class Square {
 		List<Square> possibleFields = new ArrayList<Square>();
 		//if pawn: Do special
 		for (Dir d: this.piece.getDirs()){
-			int moveLength = this.piece.getMovelength(d);
+			int moveLength = this.piece.getMoveLength(d);
 			List<Square> dPath = getPath(d, moveLength);
 			dPath.remove(0);
 			Piece foundPiece = dPath.get(dPath.size() - 1).getPiece();
