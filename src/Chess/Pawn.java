@@ -13,11 +13,16 @@ public class Pawn extends Piece {
 		
 		public Dir[] getDirs(){
 			ArrayList<Dir> dirList = new ArrayList<Dir>();
-			dirList.add(moveDirs[0]);
+			
+			Square upSquare = this.currentSquare.getNeighbour(moveDirs[0]);
 			Square upleftSquare = this.currentSquare.getNeighbour(moveDirs[1]);
 			Square uprightSquare = this.currentSquare.getNeighbour(moveDirs[2]);
+			
+			Piece upPiece = (upSquare == null) ? null:upSquare.getPiece();			
 			Piece upleftPiece = (upleftSquare == null) ? null:upleftSquare.getPiece();
 			Piece uprightPiece = (uprightSquare == null) ? null:uprightSquare.getPiece();
+			
+			if (upPiece == null) dirList.add(moveDirs[0]);
 			if (upleftPiece != null && upleftPiece.owner != this.owner) dirList.add(moveDirs[1]);
 			if (uprightPiece != null && uprightPiece.owner != this.owner) dirList.add(moveDirs[2]);
 			Dir[] dirArray = new Dir[dirList.size()];
