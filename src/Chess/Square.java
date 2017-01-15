@@ -7,6 +7,7 @@ public class Square {
 	private int x, y; //0 indexed, use getName to get chess convention name.
 	private Piece piece; //or as function
 	private Square[] neighbours = new Square[8];
+	private Square[] knightSquares = new Square[8];
 	public Square() {
 	}
 	public void setPiece(Piece piece){
@@ -29,6 +30,15 @@ public class Square {
 	public Square getNeighbour(Dir d){
 		return neighbours[d.ordinal()];
 	}
+	
+	public void setKnightSquare(KnightMove km, Square knightNeighbour){
+		knightSquares[km.ordinal()] = knightNeighbour;
+	}
+	
+	public Square getKnightSquare(KnightMove km){
+		return knightSquares[km.ordinal()];
+	}
+	
 	
 	//Think about where its called from
 	public List<Square> getPaths(){
@@ -93,7 +103,12 @@ public class Square {
 		if (foundPiece.owner.isWhite() && representation == 'y') return true;
 		if (representation == 'Y') return true;
 		return false;
-		
+	}
+	public List<Square> getRelevantSquares(){
+		ArrayList<Square> relevantSquares = new ArrayList<Square>(); 
+		for (Dir d : Dir.values()) relevantSquares.add(look(d));
+		for (KnightMove km : KnightMove.values()) if(km != null) relevantSquares.add(getKnightSquare(km));
+		return relevantSquares;
 	}
 	
 	public String toString() {return (char)('a' + y) + "" + (x+1);}

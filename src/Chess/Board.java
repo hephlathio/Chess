@@ -34,7 +34,17 @@ public class Board {
 			}
 		}
 	}
-	
+	private void setKnightNeighbours(){
+		for(int y = 0; y < 8; y++){
+			for(int x = 0; x < 8; x++){
+				for (KnightMove km : KnightMove.values()) {
+					int[] delta = km.toCoords();
+					if (x + delta[0] >= 0 && x + delta[0] < 8 && y + delta[1] >= 0 && y + delta[1] < 8)
+						boardSquares[x][y].setKnightSquare(km, boardSquares[x + delta[0]][y + delta[1]]);
+				}	
+			}
+		}
+	}
 	public void setWhite(Player player) {
 		this.white = player;
 	}
