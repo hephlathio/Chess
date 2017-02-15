@@ -32,8 +32,7 @@ public abstract class Piece {
 			path = getCurrentSquare().getPath(d, moveLength);
 			path.remove(0); //removes current square from path
 			Piece foundPiece = path.get(path.size() - 1).getPiece();
-			if (foundPiece != null && foundPiece.getOwner() == getOwner()) path.remove(path.size() - 1); 
-			//TODO make function to compare owners of two pieces
+			if (foundPiece != null && shareOwner(foundPiece)) path.remove(path.size() - 1); 
 			possibleFields.addAll(path);
 			path.clear();
 		}
@@ -64,6 +63,10 @@ public abstract class Piece {
 	
 	public Player getOwner() {
 		return owner;
+	}
+	
+	public boolean shareOwner(Piece piece){
+		return (piece.getOwner() == getOwner());
 	}
 
 	public int getMoveLength(Dir d) {

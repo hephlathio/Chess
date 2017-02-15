@@ -58,7 +58,14 @@ public class JUnitTester {
 
 		assertEquals(testPawn.getCurrentSquare().getPiece().getPossibleMoves().size(), 1);
 		assertEquals(testPawn.getDirs().length, 1);
-		
+	}
+	
+	@Test
+	public void knightTest(){
+		Game testGame = Game.newGame();
+		Piece whiteLeftKnight = testGame.getBoard().boardSquares[0][1].getPiece();
+		System.out.println(whiteLeftKnight.representation);
+		assertEquals(1,1);
 	}
 	
 	@Test
