@@ -67,7 +67,7 @@ public class Game {
 	}
 
 	public void initBoard(){
-		board = new Board();
+		board = new Board(); //TODO 1 line instead of 3 here
 		board.setWhite(white);
 		board.setBlack(black);
 		board.init();

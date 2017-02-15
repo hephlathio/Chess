@@ -1,5 +1,7 @@
 package Chess;
 
+//Should initialize squares, and be gateway for calling for them
+
 public class Board {
 	public Square[][] boardSquares; //lol square brackets
 	private Player white, black;
@@ -45,6 +47,8 @@ public class Board {
 			}
 		}
 	}
+	
+	//TODO Move to game, get it in constructor
 	public void setWhite(Player player) {
 		this.white = player;
 	}

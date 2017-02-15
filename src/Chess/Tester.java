@@ -43,12 +43,4 @@ public class Tester {
 		System.out.println(testMove[0]);
 		System.out.println(testMove[1]);
 	}
-	
-	public static void main(String[] args) {
-		asciiGUITest();
-		lookTest();
-		dirTest();
-		pathTest();
-		playerTest();
-	}
 }
