@@ -1,6 +1,7 @@
 package Chess;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Piece {
 	protected Player owner; //No longer racist
@@ -21,6 +22,25 @@ public abstract class Piece {
 		//illegal move
 		return possibleSquares;
 	}
+	
+	public List<Square> getPaths(){
+		List<Square> possibleFields = new ArrayList<Square>();
+		List<Square> path = new ArrayList<Square>();
+		//if pawn: Do special
+		for (Dir d: getDirs()){
+			int moveLength = getMoveLength(d);
+			path = getCurrentSquare().getPath(d, moveLength);
+			path.remove(0); //removes current square from path
+			Piece foundPiece = path.get(path.size() - 1).getPiece();
+			if (foundPiece != null && foundPiece.getOwner() == getOwner()) path.remove(path.size() - 1); 
+			//TODO make function to compare owners of two pieces
+			possibleFields.addAll(path);
+			path.clear();
+		}
+		return possibleFields;
+	}
+	
+	
 	
 	public Dir[] getDirs(){
 		return moveDirs;

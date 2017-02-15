@@ -39,22 +39,6 @@ public class Square {
 		return knightSquares[km.ordinal()];
 	}
 	
-	
-	//Think about where its called from
-	public List<Square> getPaths(){
-		List<Square> possibleFields = new ArrayList<Square>();
-		//if pawn: Do special
-		for (Dir d: this.piece.getDirs()){
-			int moveLength = this.piece.getMoveLength(d);
-			List<Square> dPath = getPath(d, moveLength);
-			dPath.remove(0);
-			Piece foundPiece = dPath.get(dPath.size() - 1).getPiece();
-			if (foundPiece != null && foundPiece.getOwner() == this.getPiece().getOwner()) dPath.remove(dPath.size() - 1);
-			possibleFields.addAll(dPath);
-		}
-		return possibleFields;
-	}
-	
 	public List<Square> getPath(Dir d) {return getPath(d, 8);}
 	
 	public List<Square> getPath(Dir d, int length){
