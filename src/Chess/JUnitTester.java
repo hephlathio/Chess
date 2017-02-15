@@ -41,22 +41,22 @@ public class JUnitTester {
 	public void pawnTest(){
 		Game testGame = Game.newGame();
 		Piece testPawn = testGame.getBoard().boardSquares[1][2].getPiece();
-		assertEquals(testPawn.getCurrentSquare().getPiece().getPaths().size(), 2);
+		assertEquals(testPawn.getCurrentSquare().getPiece().getPossibleMoves().size(), 2);
 		testGame.getBoard().boardSquares[2][1].setPiece(new Pawn(testGame.getPlayers()[1], testGame.getBoard().boardSquares[2][1]));
 
 		//Tests for pawn able to take other pieces diagonally
-		assertEquals(testPawn.getCurrentSquare().getPiece().getPaths().size(), 3);
+		assertEquals(testPawn.getCurrentSquare().getPiece().getPossibleMoves().size(), 3);
 		assertEquals(testPawn.getDirs().length, 2);
 		
 		testGame.getBoard().boardSquares[2][3].setPiece(new Pawn(testGame.getPlayers()[0], testGame.getBoard().boardSquares[2][3]));
-		assertEquals(testPawn.getCurrentSquare().getPiece().getPaths().size(), 3);
+		assertEquals(testPawn.getCurrentSquare().getPiece().getPossibleMoves().size(), 3);
 		assertEquals(testPawn.getDirs().length, 2);
 		
 		testGame.getBoard().boardSquares[2][2].setPiece(new Pawn(testGame.getPlayers()[0], testGame.getBoard().boardSquares[2][2]));
 //		AsciiGUI ag = new AsciiGUI(testGame.getBoard());
 //		System.out.println(ag.draw());
 
-		assertEquals(testPawn.getCurrentSquare().getPiece().getPaths().size(), 1);
+		assertEquals(testPawn.getCurrentSquare().getPiece().getPossibleMoves().size(), 1);
 		assertEquals(testPawn.getDirs().length, 1);
 		
 	}
@@ -66,7 +66,7 @@ public class JUnitTester {
 		Game testGame = Game.newGame();
 		testGame.getBoard().boardSquares[3][3].setPiece(new Rook(testGame.getPlayers()[0], testGame.getBoard().boardSquares[3][3]));
 		
-		assertEquals(testGame.getBoard().boardSquares[3][3].getPiece().getPaths().size(), 11);
+		assertEquals(testGame.getBoard().boardSquares[3][3].getPiece().getPossibleMoves().size(), 11);
 	}
 	@Test
 	public void playerTest(){
