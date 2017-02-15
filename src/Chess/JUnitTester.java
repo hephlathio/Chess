@@ -2,6 +2,8 @@ package Chess;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -64,8 +66,10 @@ public class JUnitTester {
 	public void knightTest(){
 		Game testGame = Game.newGame();
 		Piece whiteLeftKnight = testGame.getBoard().boardSquares[0][1].getPiece();
-		System.out.println(whiteLeftKnight.representation);
-		assertEquals(1,1);
+		List<Square> possibleMoves = whiteLeftKnight.getPossibleMoves();
+		assertEquals(possibleMoves.size(),2);
+		assertEquals(possibleMoves.get(0), testGame.getBoard().boardSquares[2][0]);
+		assertEquals(possibleMoves.get(1), testGame.getBoard().boardSquares[2][2]);
 	}
 	
 	@Test
