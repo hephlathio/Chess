@@ -6,26 +6,28 @@ public class Board {
 	public Square[][] boardSquares; //lol square brackets
 	private Player white, black;
 	
-	public Board() {
+	public Board(Player white, Player black) {
+		setWhite(white);
+		setBlack(black);
 	}
 	
 	public void init(){
 		//TODO implement board initialization
-		initDefaultBoard();
+		initEmptyBoard();
 		initPieces();
 	}
 	
 	//Initializes from loaded game
 	public void init(char[][] charBoard){
-		initDefaultBoard();
+		initEmptyBoard();
 		for(int y = 0; y < 8; y++){
 			for(int x = 0; x < 8; x++){
-				boardSquares[x][y].setPiece(Piece.createPiece(charBoard[y][x], white, black, boardSquares[x][y]));
+				boardSquares[x][y].setPiece(Piece.createPiece(charBoard[x][y], white, black, boardSquares[x][y]));
 			}
 		}
 	}
 	
-	private void initDefaultBoard(){
+	private void initEmptyBoard(){
 		boardSquares = new Square[8][8];
 		for(int y = 0; y < 8; y++){
 			for(int x = 0; x < 8; x++){
@@ -61,11 +63,11 @@ public class Board {
 	}
 	
 	//TODO Move to game, get it in constructor
-	public void setWhite(Player player) {
+	private void setWhite(Player player) {
 		this.white = player;
 	}
 	
-	public void setBlack(Player player) {
+	private void setBlack(Player player) {
 		this.black = player;
 	}
 	

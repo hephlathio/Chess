@@ -1,7 +1,5 @@
 package Chess;
 
-import java.util.Map;
-
 public class Player {
 	private Player opponent;
 	private boolean white;
