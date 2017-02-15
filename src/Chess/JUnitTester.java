@@ -87,4 +87,9 @@ public class JUnitTester {
 		assertEquals(testMove[0].toString(), "b2");
 		assertEquals(testMove[1].toString(), "c5");
 	}
+	@Test
+	public void loadTest(){
+		Game loadGame = Game.loadGame(Game.filePath);
+		assertEquals(loadGame.getBoard().boardSquares[1][1].getPiece().getPossibleMoves().size(), 2);
+	}
 }

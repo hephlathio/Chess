@@ -9,11 +9,12 @@ public class Knight extends Piece {
 			representation = 'n';
 	}
 		
+		@Override
 		public List<Square> getPossibleMoves(){
 			List<Square> possibleMoves = new ArrayList<Square>();
 			for (KnightMove kd : KnightMove.values()){
 				Square candidate = getCurrentSquare().getKnightSquare(kd);
-				if (candidate != null && candidate.getPiece() != null && !shareOwner(candidate.getPiece())) {
+				if (candidate != null && (candidate.getPiece() == null || !shareOwner(candidate.getPiece()))) {
 					possibleMoves.add(candidate);
 				}
 			}

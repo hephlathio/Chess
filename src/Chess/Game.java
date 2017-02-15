@@ -10,6 +10,7 @@ public class Game {
 	private Board board;
 	private Player white, black;
 	private Player currentPlayer;
+	public static String filePath = "../Chess/games/testGame.txt";
 	
 	public static Game newGame() {
 		Game game = new Game();
@@ -54,12 +55,10 @@ public class Game {
 		}
 	}
 	
-	public static Game loadGame(String filePath, Player white, Player black) {
-		//TODO
-		
+	public static Game loadGame(String filePath) {
 		Game game = new Game();
-		game.initNewGame(white, black);
-		
+		game.initNewGame();
+				
 		char[][] charBoard = new char[8][8];
 		
 		try(BufferedReader br = new BufferedReader(new FileReader(new File(filePath)))){
@@ -69,14 +68,14 @@ public class Game {
 					charBoard[y][x] = line.charAt(x);
 				}
 			}
-			
+			game.getBoard().init(charBoard);
+
 		//TODO Create default game if file not found
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
 		return game;
 	}
 	

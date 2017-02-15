@@ -34,6 +34,7 @@ public class Board {
 			}
 		}
 		setNeighbours();
+		setKnightNeighbours();
 	}
 	
 	private void setNeighbours(){
