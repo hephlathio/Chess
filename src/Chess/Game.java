@@ -1,5 +1,11 @@
 package Chess;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
 public class Game {
 	private Board board;
 	private Player white, black;
@@ -48,9 +54,30 @@ public class Game {
 		}
 	}
 	
-	public static Game loadGame() {
+	public static Game loadGame(String filePath, Player white, Player black) {
 		//TODO
-		return null;
+		
+		Game game = new Game();
+		game.initNewGame(white, black);
+		
+		char[][] charBoard = new char[8][8];
+		
+		try(BufferedReader br = new BufferedReader(new FileReader(new File(filePath)))){
+			for(int y = 0; y < 8; y++){
+				String line = br.readLine();
+				for(int x = 0; x < 8; x++){
+					charBoard[y][x] = line.charAt(x);
+				}
+			}
+			
+		//TODO Create default game if file not found
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return game;
 	}
 	
 	public void saveGame() {

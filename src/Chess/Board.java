@@ -14,6 +14,17 @@ public class Board {
 		initDefaultBoard();
 		initPieces();
 	}
+	
+	//Initializes from loaded game
+	public void init(char[][] charBoard){
+		initDefaultBoard();
+		for(int y = 0; y < 8; y++){
+			for(int x = 0; x < 8; x++){
+				boardSquares[x][y].setPiece(Piece.createPiece(charBoard[y][x], white, black, boardSquares[x][y]));
+			}
+		}
+	}
+	
 	private void initDefaultBoard(){
 		boardSquares = new Square[8][8];
 		for(int y = 0; y < 8; y++){

@@ -72,4 +72,22 @@ public abstract class Piece {
 	public int getMoveLength(Dir d) {
 		return 8;
 	}
+	
+	public static Piece createPiece(char c, Player white, Player black, Square square){
+		switch (c) {
+		case 'k': return new King(white, square);
+		case 'K': return new King(black, square);
+		case 'q': return new Queen(white, square);
+		case 'Q': return new Queen(black, square);
+		case 'r': return new Rook(white, square);
+		case 'R': return new Rook(black, square);
+		case 'b': return new Bishop(white, square);
+		case 'B': return new Bishop(black, square);
+		case 'n': return new Knight(white, square);
+		case 'N': return new Knight(black, square);
+		case 'p': return new Pawn(white, square);
+		case 'P': return new Pawn(black, square);
+		default : return null;
+		}
+	}
 }
