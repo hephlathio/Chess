@@ -119,4 +119,19 @@ public class Board {
 		char row = s.charAt(1);
 		return boardSquares[row - '1'][col - 'a'];
 	}
+
+	public boolean doMove(Square from, Square to) {
+		boolean legalMove = isLegal(from, to);
+		return legalMove;
+	}
+
+	private boolean isLegal(Square from, Square to) {
+		Piece p = from.getPiece();
+		if (p == null) return false;
+		return p.isLegalMove(to);
+		
+		//TODO: Lookup in list
+
+		
+	}
 }

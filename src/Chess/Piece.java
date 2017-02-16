@@ -23,6 +23,12 @@ public abstract class Piece {
 		return legalSquares;
 	}
 	
+	//TODO: Make lookup in list
+	public boolean isLegalMove(Square toSquare){
+		ArrayList<Square> legalMoves = getLegalMoves();
+		return legalMoves.contains(toSquare);
+	}
+	
 	public List<Square> getPossibleMoves(){
 		List<Square> possibleFields = new ArrayList<Square>();
 		List<Square> path = new ArrayList<Square>();
