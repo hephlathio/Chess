@@ -94,6 +94,17 @@ public class JUnitTester {
 	}
 	
 	@Test
+	public void gameFlowTest(){
+		Player testPlayer1 = new TestPlayer(new String[][]{{"e2", "e4"},{"g1", "f3"}});
+		Player testPlayer2 = new TestPlayer(new String[][]{{"e7", "e5"},{"b8", "c6"}});
+		Game testGame = Game.newGame(testPlayer1, testPlayer2);
+		AsciiGUI ag = new AsciiGUI(testGame.getBoard());
+		System.out.println(ag.draw());
+		testGame.play();
+		System.out.println(ag.draw());
+	}
+	
+	@Test
 	public void loadSaveTest(){
 		Game loadGame = Game.loadGame(Game.defaultPath);
 		loadGame.saveGame();

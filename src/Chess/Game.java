@@ -93,6 +93,8 @@ public class Game {
 		black.setIsWhite(false);
 		white.setGame(this);
 		black.setGame(this);
+		white.setOpponent(black);
+		black.setOpponent(white);
 	}
 	//----------------------------------------------------
 	public void initBoard(){
@@ -106,7 +108,11 @@ public class Game {
 			boolean noLegalMoveMade = true;
 			while(noLegalMoveMade){
 				Square[] proposedMove = currentPlayer.move();
-				noLegalMoveMade = board.doMove(proposedMove[0], proposedMove[1]);
+				if (proposedMove != null) noLegalMoveMade = !board.doMove(proposedMove[0], proposedMove[1]);
+				else {
+					playing = false;
+					noLegalMoveMade = false;
+				}
 			}
 			//playing = Board.playing
 			//Clock.hit

@@ -15,8 +15,8 @@ public abstract class Piece {
 	}
 	
 	//need different logic for all pieces
-	public ArrayList<Square> getLegalMoves(){
-		ArrayList<Square> legalSquares = new ArrayList<Square>();
+	public List<Square> getLegalMoves(){
+		List<Square> legalSquares = getPossibleMoves();
 		//for all opponent pieces
 		//if can take king
 		//illegal move
@@ -25,7 +25,7 @@ public abstract class Piece {
 	
 	//TODO: Make lookup in list
 	public boolean isLegalMove(Square toSquare){
-		ArrayList<Square> legalMoves = getLegalMoves();
+		List<Square> legalMoves = getLegalMoves();
 		return legalMoves.contains(toSquare);
 	}
 	
