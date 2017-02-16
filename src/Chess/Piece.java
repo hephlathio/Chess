@@ -8,7 +8,7 @@ public abstract class Piece {
 	protected Square currentSquare;
 	protected char representation;
 	protected Dir[] moveDirs;
-		
+	public boolean hasMoved;	
 	public Piece(Player owner, Square currentSquare) {
 		this.owner = owner;
 		this.setCurrentSquare(currentSquare);

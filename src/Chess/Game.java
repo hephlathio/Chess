@@ -28,6 +28,7 @@ public class Game {
 		return new Player[]{new DummyPlayer(), new DummyPlayer()};
 	}
 
+
 	public static Game loadGame(String filePath, Player white, Player black) {
 		Game game = new Game();
 		game.initNewGame(white, black);
@@ -48,12 +49,14 @@ public class Game {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
+		} 
 		return game;
 	}
+	
 	public void saveGame(){
 		saveGame(defaultSavePath);
 	}
+	
 	public void saveGame(String savePath) {
 		try(BufferedWriter bw = new BufferedWriter(new FileWriter(new File(savePath)))){
 			for (int y = 7; y >= 0; y--) {
