@@ -93,6 +93,7 @@ public class Board {
 
 	public boolean doMove(Square from, Square to) {
 		boolean legalMove = isLegal(from, to);
+		if (legalMove) move(from, to);
 		return legalMove;
 	}
 
