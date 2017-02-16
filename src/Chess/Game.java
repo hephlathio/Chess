@@ -103,7 +103,11 @@ public class Game {
 	public void play() {
 		boolean playing = true;
 		while (playing) {
-			currentPlayer.move();
+			boolean noLegalMoveMade = true;
+			while(noLegalMoveMade){
+				Square[] proposedMove = currentPlayer.move();
+				noLegalMoveMade = board.doMove(proposedMove[0], proposedMove[1]);
+			}
 			//playing = Board.playing
 			//Clock.hit
 			currentPlayer = currentPlayer.getOpponent();

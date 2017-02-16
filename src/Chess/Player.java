@@ -1,6 +1,6 @@
 package Chess;
 
-public class Player {
+public abstract class Player {
 	private Player opponent;
 	private boolean white;
 	private Piece king;
@@ -29,11 +29,5 @@ public class Player {
 		this.game = game;
 	}
 	//please override this
-	public Square[] move() {
-		//wait move
-		//read move
-		//list next
-		//calc next
-		return null;
-	}
+	public abstract Square[] move();
 }
