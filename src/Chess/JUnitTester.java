@@ -113,4 +113,26 @@ public class JUnitTester {
 		AsciiGUI ag2 = new AsciiGUI(saveGame.getBoard());
 		assertEquals(ag1.draw(), ag2.draw());
 	}
+	
+	@Test
+	public void kingAssignTest(){
+		Game game = Game.newGame();
+		assertEquals(game.getBoard().getWhiteKing().currentSquare.getX(), 0);
+		assertEquals(game.getBoard().getWhiteKing().currentSquare.getY(), 4);
+		assertEquals(game.getBoard().getBlackKing().currentSquare.getX(), 7);
+		assertEquals(game.getBoard().getBlackKing().currentSquare.getY(), 4);
+	}
+	@Test
+	public void castleTest(){
+		Game game = Game.newGame();
+		game.getBoard().boardSquares[0][5].setPiece(null);
+		game.getBoard().boardSquares[0][6].setPiece(null);
+		assert(game.getBoard().getWhiteKing().canCastleShort());
+		game.getBoard().doCastleShort(game.getPlayers()[0]);
+		assertEquals(game.getBoard().boardSquares[0][6].getPiece().getRepresentation(),'k');
+		assertEquals(game.getBoard().boardSquares[0][5].getPiece().getRepresentation(),'r');
+		assertEquals(game.getBoard().boardSquares[0][7].getPiece(), null);
+		assertEquals(game.getBoard().boardSquares[0][4].getPiece(), null);
+	}
+	
 }

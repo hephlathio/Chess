@@ -8,6 +8,14 @@ public class Board {
 	private King whiteKing, blackKing;
 	
 	
+	public King getWhiteKing() {
+		return whiteKing;
+	}
+
+	public King getBlackKing() {
+		return blackKing;
+	}
+
 	public Board(Player white, Player black) {
 		setWhite(white);
 		setBlack(black);
