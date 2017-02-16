@@ -21,6 +21,12 @@ public class Square {
 		this.x = x;
 		this.y = y;
 	}
+	public int getX(){
+		return x;
+	}
+	public int getY(){
+		return y;
+	}
 	
 	//Set the neighboring square in direction d
 	public void setNeighbour(Dir d, Square neighbour){

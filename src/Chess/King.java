@@ -14,7 +14,7 @@ public class King extends Piece {
 		}
 		
 	public boolean canCastleShort() {
-		Piece leftPiece = currentSquare.look(Dir.LEFT).getPiece();
+		Piece leftPiece = currentSquare.look(Dir.RIGHT).getPiece();
 		
 		//TODO Check for check
 		if(!hasMoved && (leftPiece.representation=='r' && !leftPiece.hasMoved)){
@@ -23,7 +23,7 @@ public class King extends Piece {
 		return false;
 	}
 	public boolean canCastleLong() {
-		Piece rightPiece = currentSquare.look(Dir.RIGHT).getPiece();
+		Piece rightPiece = currentSquare.look(Dir.LEFT).getPiece();
 		
 		//TODO Check for check
 		if(!hasMoved && (rightPiece.representation=='r' && !rightPiece.hasMoved)){
