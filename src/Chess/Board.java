@@ -5,6 +5,8 @@ package Chess;
 public class Board {
 	public Square[][] boardSquares; //lol square brackets
 	private Player white, black;
+	private King whiteKing, blackKing;
+	
 	
 	public Board(Player white, Player black) {
 		setWhite(white);
@@ -21,7 +23,12 @@ public class Board {
 		initEmptyBoard();
 		for(int y = 0; y < 8; y++){
 			for(int x = 0; x < 8; x++){
-				boardSquares[x][y].setPiece(Piece.createPiece(charBoard[x][y], white, black, boardSquares[x][y]));
+				Piece piece = Piece.createPiece(charBoard[x][y], white, black, boardSquares[x][y]);
+				boardSquares[x][y].setPiece(piece);
+				if(piece != null && piece.representation=='k'){
+					if(piece.owner.isWhite()) 	whiteKing = (King) piece;
+					else 						blackKing = (King) piece;
+				}
 			}
 		}
 	}
@@ -70,50 +77,6 @@ public class Board {
 		this.black = player;
 	}
 	
-//	private void initPieces(){
-//		initPawns();
-//		initKnights();
-//		initBishops();
-//		initRooks();
-//		initKings();
-//		initQueens();
-//	}
-//
-//	private void initQueens() {
-//		boardSquares[0][3].setPiece(new Queen(white, boardSquares[0][3]));
-//		boardSquares[7][3].setPiece(new Queen(black, boardSquares[7][3]));
-//	}
-//	private void initKings() {
-//		boardSquares[0][4].setPiece(new King(white, boardSquares[0][4]));
-//		boardSquares[7][4].setPiece(new King(black, boardSquares[7][4]));
-//	}
-//	private void initRooks() {
-//		boardSquares[0][0].setPiece(new Rook(white, boardSquares[0][0]));
-//		boardSquares[0][7].setPiece(new Rook(white, boardSquares[0][7]));
-//		
-//		boardSquares[7][0].setPiece(new Rook(black, boardSquares[7][0]));
-//		boardSquares[7][7].setPiece(new Rook(black, boardSquares[7][7]));
-//	}
-//	private void initBishops() {
-//		boardSquares[0][2].setPiece(new Bishop(white, boardSquares[0][2]));
-//		boardSquares[0][5].setPiece(new Bishop(white, boardSquares[0][5]));
-//		
-//		boardSquares[7][2].setPiece(new Bishop(black, boardSquares[7][2]));
-//		boardSquares[7][5].setPiece(new Bishop(black, boardSquares[7][5]));	}
-//	private void initKnights() {
-//		boardSquares[0][1].setPiece(new Knight(white, boardSquares[0][1]));
-//		boardSquares[0][6].setPiece(new Knight(white, boardSquares[0][6]));
-//		
-//		boardSquares[7][1].setPiece(new Knight(black, boardSquares[7][1]));
-//		boardSquares[7][6].setPiece(new Knight(black, boardSquares[7][6]));		
-//	}
-//	private void initPawns() {
-//		for(int i = 0; i < 8; i++){
-//			boardSquares[1][i].setPiece(new Pawn(white, boardSquares[1][i]));
-//			boardSquares[6][i].setPiece(new Pawn(black, boardSquares[6][i]));
-//		}
-//	}
-	
 	public Square stringToSquare(String s){
 		char col = s.charAt(0);
 		char row = s.charAt(1);
@@ -129,9 +92,34 @@ public class Board {
 		Piece p = from.getPiece();
 		if (p == null) return false;
 		return p.isLegalMove(to);
+	}
 		
 		//TODO: Lookup in list
 
-		
+	
+	public void doCastleShort(Player player){
+		if(player.isWhite() && whiteKing.canCastleShort()){
+			move(boardSquares[0][4], boardSquares[0][6]);
+			move(boardSquares[0][7], boardSquares[0][5]);
+		}
+		else if (blackKing.canCastleShort()){
+			move(boardSquares[7][4], boardSquares[7][6]);
+			move(boardSquares[7][7], boardSquares[7][5]);
+		}
+	}
+	public void doCastleLong(Player player){
+		if(player.isWhite() && whiteKing.canCastleLong()){
+			move(boardSquares[0][4], boardSquares[0][2]);
+			move(boardSquares[0][0], boardSquares[0][3]);
+		}
+		else if (blackKing.canCastleLong()){
+			move(boardSquares[7][4], boardSquares[7][2]);
+			move(boardSquares[7][0], boardSquares[7][3]);
+		}
+	}
+	
+	private void move(Square startSquare, Square endSquare){
+		endSquare.setPiece(startSquare.getPiece());
+		startSquare.setPiece(null);
 	}
 }
