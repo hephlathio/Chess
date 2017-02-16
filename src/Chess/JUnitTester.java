@@ -120,8 +120,7 @@ public class JUnitTester {
 		game.getBoard().doCastleShort(game.getPlayers()[0]);
 		assertEquals(game.getBoard().boardSquares[0][6].getPiece().getRepresentation(),'k');
 		assertEquals(game.getBoard().boardSquares[0][5].getPiece().getRepresentation(),'r');
-		assertEquals(game.getBoard().boardSquares[0][7].getPiece(), null);
-		assertEquals(game.getBoard().boardSquares[0][4].getPiece(), null);
+		Assert.assertNull(game.getBoard().boardSquares[0][7].getPiece());
+		Assert.assertNull(game.getBoard().boardSquares[0][4].getPiece());
 	}
-	
 }
