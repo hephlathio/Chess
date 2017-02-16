@@ -79,6 +79,7 @@ public class JUnitTester {
 		
 		assertEquals(testGame.getBoard().boardSquares[3][3].getPiece().getPossibleMoves().size(), 11);
 	}
+	
 	@Test
 	public void playerTest(){
 		Player testPlayer1 = new TestPlayer(new String[][]{{"a2", "a3"},{"b2", "c5"}});
@@ -91,6 +92,7 @@ public class JUnitTester {
 		assertEquals(testMove[0].toString(), "b2");
 		assertEquals(testMove[1].toString(), "c5");
 	}
+	
 	@Test
 	public void loadSaveTest(){
 		Game loadGame = Game.loadGame(Game.defaultPath);

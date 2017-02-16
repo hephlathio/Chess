@@ -14,20 +14,23 @@ public class Game {
 	private Player currentPlayer;
 	public static String defaultPath = "../Chess/games/testGame.txt";
 	public static String defaultSavePath = "../Chess/games/saveGame.txt";
+	
 	public static Game newGame() {
 		return loadGame(defaultPath);
 	}
-
-	public void initNewGame() {
-		
-		initPlayers();
-		initBoard();
-		currentPlayer = white;
+	
+	public static Game loadGame(String filePath){
+		Player[] wb = getDefaultPlayers();
+		return loadGame(filePath, wb[0], wb[1]);
+	}
+	
+	public static Player[] getDefaultPlayers(){
+		return new Player[]{new DummyPlayer(), new DummyPlayer()};
 	}
 
-	public static Game loadGame(String filePath) {
+	public static Game loadGame(String filePath, Player white, Player black) {
 		Game game = new Game();
-		game.initNewGame();
+		game.initNewGame(white, black);
 				
 		char[][] charBoard = new char[8][8];
 		
@@ -71,8 +74,7 @@ public class Game {
 	//Used for testing with different player types
 	//-----------------------------------------------------
 	public static Game newGame(Player white, Player black) {
-		Game game = new Game();
-		game.initNewGame(white, black);
+		Game game = loadGame(defaultPath, white, black);
 		return game;
 	}
 	
@@ -89,18 +91,7 @@ public class Game {
 		white.setGame(this);
 		black.setGame(this);
 	}
-	//-----------------------------------------------------
-	
-	
-	public void initPlayers(){
-		white = new TestPlayer(new String[][]{{"a2", "a3"},{"b2", "c5"}});
-		black = new Player();
-		white.setIsWhite(true);
-		black.setIsWhite(false);
-		white.setGame(this);
-		black.setGame(this);
-	}
-
+	//----------------------------------------------------
 	public void initBoard(){
 		board = new Board(white, black);
 		board.init();
