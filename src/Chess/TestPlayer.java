@@ -8,6 +8,7 @@ public class TestPlayer extends Player {
 		moveNr = 0;
 	}
 	
+	@Override
 	public Square[] move() {
 		Square[] move = new Square[] {	game.getBoard().stringToSquare(moves[moveNr][0]),
 										game.getBoard().stringToSquare(moves[moveNr][1])};

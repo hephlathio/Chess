@@ -17,9 +17,7 @@ public class Game {
 	public static Game newGame() {
 		return loadGame(defaultPath);
 	}
-
 	public void initNewGame() {
-		
 		initPlayers();
 		initBoard();
 		currentPlayer = white;
@@ -45,12 +43,14 @@ public class Game {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
+		} 
 		return game;
 	}
+	
 	public void saveGame(){
 		saveGame(defaultSavePath);
 	}
+	
 	public void saveGame(String savePath) {
 		try(BufferedWriter bw = new BufferedWriter(new FileWriter(new File(savePath)))){
 			for (int y = 7; y >= 0; y--) {
