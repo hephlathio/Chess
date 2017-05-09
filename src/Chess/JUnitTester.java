@@ -21,7 +21,7 @@ public class JUnitTester {
 //	
 	@Test
 	public void lookSeekTest() {
-		Game testGame = Game.newGame();
+		Game testGame = Game.createGame();
 		Square testSquare = testGame.getBoard().boardSquares[1][1];
 		//Assert.assertEquals(testSquare, )
 		assertEquals(testSquare.toString(), "b2");
@@ -31,7 +31,7 @@ public class JUnitTester {
 	}
 	@Test
 	public void dirTest() {
-		Game testGame = Game.newGame();
+		Game testGame = Game.createGame();
 		Piece testPiece = testGame.getBoard().boardSquares[0][0].getPiece();
 		Piece testPiece2 = testGame.getBoard().boardSquares[0][3].getPiece();
 		Piece testPiece3 = testGame.getBoard().boardSquares[1][0].getPiece();
@@ -41,7 +41,7 @@ public class JUnitTester {
 		}
 	@Test
 	public void pawnTest(){
-		Game testGame = Game.newGame();
+		Game testGame = Game.createGame();
 		Piece testPawn = testGame.getBoard().boardSquares[1][2].getPiece();
 		assertEquals(testPawn.getCurrentSquare().getPiece().getPossibleMoves().size(), 2);
 		testGame.getBoard().boardSquares[2][1].setPiece(new Pawn(testGame.getPlayers()[1], testGame.getBoard().boardSquares[2][1]));
@@ -64,7 +64,7 @@ public class JUnitTester {
 	
 	@Test
 	public void knightTest(){
-		Game testGame = Game.newGame();
+		Game testGame = Game.createGame();
 		Piece whiteLeftKnight = testGame.getBoard().boardSquares[0][1].getPiece();
 		List<Square> possibleMoves = whiteLeftKnight.getPossibleMoves();
 		assertEquals(possibleMoves.size(),2);
@@ -74,7 +74,7 @@ public class JUnitTester {
 	
 	@Test
 	public void pathTest() {
-		Game testGame = Game.newGame();
+		Game testGame = Game.createGame();
 		testGame.getBoard().boardSquares[3][3].setPiece(new Rook(testGame.getPlayers()[0], testGame.getBoard().boardSquares[3][3]));
 		
 		assertEquals(testGame.getBoard().boardSquares[3][3].getPiece().getPossibleMoves().size(), 11);
@@ -84,7 +84,7 @@ public class JUnitTester {
 	public void playerTest(){
 		Player testPlayer1 = new TestPlayer(new String[][]{{"a2", "a3"},{"b2", "c5"}});
 		Player testPlayer2 = new TestPlayer(new String[][]{{"a2", "a3"},{"b2", "c5"}});
-		Game testGame = Game.newGame(testPlayer1, testPlayer2);
+		Game testGame = Game.createGame(testPlayer1, testPlayer2);
 		Square[] testMove = testPlayer1.move();
 		assertEquals(testMove[0].toString(), "a2");
 		assertEquals(testMove[1].toString(), "a3");
@@ -97,11 +97,11 @@ public class JUnitTester {
 	public void gameFlowTest(){
 		Player testPlayer1 = new TestPlayer(new String[][]{{"e2", "e4"},{"g1", "f3"}});
 		Player testPlayer2 = new TestPlayer(new String[][]{{"e7", "e5"},{"b8", "c6"}});
-		Game testGame = Game.newGame(testPlayer1, testPlayer2);
+		Game testGame = Game.createGame(testPlayer1, testPlayer2);
 		AsciiGUI ag = new AsciiGUI(testGame.getBoard());
-		System.out.println(ag.draw());
+		System.out.println(ag.represent());
 		testGame.play();
-		System.out.println(ag.draw());
+		System.out.println(ag.represent());
 	}
 	
 	@Test
@@ -111,12 +111,12 @@ public class JUnitTester {
 		Game saveGame = Game.loadGame(Game.defaultSavePath);
 		AsciiGUI ag1 = new AsciiGUI(loadGame.getBoard());
 		AsciiGUI ag2 = new AsciiGUI(saveGame.getBoard());
-		assertEquals(ag1.draw(), ag2.draw());
+		assertEquals(ag1.represent(), ag2.represent());
 	}
 	
 	@Test
 	public void kingAssignTest(){
-		Game game = Game.newGame();
+		Game game = Game.createGame();
 		assertEquals(game.getBoard().getWhiteKing().currentSquare.getX(), 0);
 		assertEquals(game.getBoard().getWhiteKing().currentSquare.getY(), 4);
 		assertEquals(game.getBoard().getBlackKing().currentSquare.getX(), 7);
@@ -124,7 +124,7 @@ public class JUnitTester {
 	}
 	@Test
 	public void castleTest(){
-		Game game = Game.newGame();
+		Game game = Game.createGame();
 		game.getBoard().boardSquares[0][5].setPiece(null);
 		game.getBoard().boardSquares[0][6].setPiece(null);
 		assert(game.getBoard().getWhiteKing().canCastleShort());

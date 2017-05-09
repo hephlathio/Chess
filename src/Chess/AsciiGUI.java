@@ -8,7 +8,7 @@ public class AsciiGUI {
 	}
 	
 	//Returns a string representing the chess board. White is represented by lowercase letters, black upper case.
-	String draw() {
+	public String represent() {
 		Square[][] b = board.boardSquares;
 		StringBuilder drawing = new StringBuilder();
 		drawing.append("  ---------------\n");
@@ -26,5 +26,9 @@ public class AsciiGUI {
 		for (char c = 'a'; c < 'i'; c += 1) {drawing.append(c + " ");}
 		drawing.append("\n");
 		return drawing.toString();
+	}
+	
+	public void draw(){
+		System.out.println(this.represent());
 	}
 }

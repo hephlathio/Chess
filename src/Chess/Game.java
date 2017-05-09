@@ -14,8 +14,9 @@ public class Game {
 	private Player currentPlayer;
 	public static String defaultPath = "../Chess/games/testGame.txt";
 	public static String defaultSavePath = "../Chess/games/saveGame.txt";
+	public AsciiGUI gui;
 	
-	public static Game newGame() {
+	public static Game createGame() {
 		return loadGame(defaultPath);
 	}
 	
@@ -31,8 +32,13 @@ public class Game {
 
 	public static Game loadGame(String filePath, Player white, Player black) {
 		Game game = new Game();
-		game.initNewGame(white, black);
-				
+		game.load(filePath, white, black);
+		return game;
+	}
+	
+	public void load(String filePath, Player white, Player black){
+		initNewGame(white, black);
+		
 		char[][] charBoard = new char[8][8];
 		
 		try(BufferedReader br = new BufferedReader(new FileReader(new File(filePath)))){
@@ -42,16 +48,17 @@ public class Game {
 					charBoard[y][x] = line.charAt(x);
 				}
 			}
-			game.getBoard().init(charBoard);
+			getBoard().init(charBoard);
 
 		//TODO Create default game if file not found
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
-		} 
-		return game;
+		} 	
 	}
+	
+
 	
 	public void saveGame(){
 		saveGame(defaultSavePath);
@@ -76,9 +83,13 @@ public class Game {
 	
 	//Used for testing with different player types
 	//-----------------------------------------------------
-	public static Game newGame(Player white, Player black) {
+	public static Game createGame(Player white, Player black) {
 		Game game = loadGame(defaultPath, white, black);
 		return game;
+	}
+	
+	public void newGame(Player white, Player black){
+		load(defaultPath, white, black);
 	}
 	
 	public void initNewGame(Player white, Player black) {
@@ -105,6 +116,7 @@ public class Game {
 	public void play() {
 		boolean playing = true;
 		while (playing) {
+			draw();
 			boolean noLegalMoveMade = true;
 			while(noLegalMoveMade){
 				Square[] proposedMove = currentPlayer.move();
@@ -119,6 +131,8 @@ public class Game {
 			currentPlayer = currentPlayer.getOpponent();
 		}
 	}
+	
+	public void draw(){}
 	
 	public Board getBoard(){
 		return board;
